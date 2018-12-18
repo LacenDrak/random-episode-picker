@@ -1,11 +1,10 @@
+"""Choose ten random video files in the directory the script is in"""
+__author__  = "Scott Maslin"
+__version__ = "1.2"
+
 import os
 import subprocess
 from random import shuffle, sample
-
-#Benchmarking
-#import time
-#start_time = time.time()
-#End benchmarking
 
 #Function to find all occurences of a substring within a string
 #(unlike str.find which just finds the first)
@@ -63,7 +62,3 @@ else:
         commandStr += ' "' +files[i] +'"'
         
 subprocess.Popen(commandStr) #Run the command to open VLC, then immediately close the shell
-
-#Benchmarking
-#print("--- %s seconds ---" % (time.time() - start_time))
-#End Benchmarking
