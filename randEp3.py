@@ -7,6 +7,7 @@ import os
 import subprocess
 import random
 
+print("###DEBUG###")
 print("Program start!")
 
 #Function to find all occurences of a substring within a string
@@ -81,7 +82,7 @@ class myInterface(pickergui.mainscreen):
             for i in range(len(self.files)):
                 commandStr += ' "' +self.files[i] +'"'
         print(commandStr)
-        self.debugOutputBox.AppendText(commandStr)
+        self.debugOutputBox.AppendText("\t" +commandStr +"\n")
         subprocess.Popen(commandStr)
                                                       
 app = wx.App(redirect=False)

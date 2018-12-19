@@ -20,7 +20,7 @@ class mainscreen ( wx.Frame ):
 		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Random Episode Picker", pos = wx.DefaultPosition, size = wx.Size( 457,330 ), style = wx.DEFAULT_FRAME_STYLE|wx.FRAME_SHAPED|wx.RESIZE_BORDER|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.Size( 457,330 ), wx.Size( 457,330 ) )
-		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOWFRAME ) )
+		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_3DLIGHT ) )
 
 		bSizer1 = wx.BoxSizer( wx.VERTICAL )
 
