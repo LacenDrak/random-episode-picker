@@ -17,9 +17,9 @@ import wx.xrc
 class mainscreen ( wx.Frame ):
 
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Random Episode Picker", pos = wx.DefaultPosition, size = wx.Size( 457,330 ), style = wx.DEFAULT_FRAME_STYLE|wx.FRAME_SHAPED|wx.RESIZE_BORDER|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Random Episode Picker", pos = wx.DefaultPosition, size = wx.Size( 457,400 ), style = wx.DEFAULT_FRAME_STYLE|wx.FRAME_SHAPED|wx.RESIZE_BORDER|wx.TAB_TRAVERSAL )
 
-		self.SetSizeHints( wx.Size( 457,330 ), wx.Size( 457,330 ) )
+		self.SetSizeHints( wx.Size( 457,400 ), wx.Size( 457,400 ) )
 		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_3DLIGHT ) )
 
 		bSizer1 = wx.BoxSizer( wx.VERTICAL )
@@ -35,11 +35,23 @@ class mainscreen ( wx.Frame ):
 
 		bSizer1.Add( self.numEpsText, 0, wx.ALL, 5 )
 
-		self.numEpsSpinner = wx.SpinCtrlDouble( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.SP_ARROW_KEYS, 1, 1024, 10.000000, 1 )
+		self.numEpsSpinner = wx.SpinCtrlDouble( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 50,-1 ), wx.SP_ARROW_KEYS, 1, 1024, 10.000000, 1 )
 		self.numEpsSpinner.SetDigits( 0 )
 		bSizer1.Add( self.numEpsSpinner, 0, wx.ALL, 5 )
 
-		self.debugOutputBox = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.HSCROLL|wx.TE_MULTILINE|wx.TE_READONLY|wx.TE_RICH )
+		self.dirpickertxt = wx.StaticText( self, wx.ID_ANY, u"Directory to choose files from:", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.dirpickertxt.Wrap( -1 )
+
+		bSizer1.Add( self.dirpickertxt, 0, wx.ALL, 5 )
+
+		self.dirPicker = wx.DirPickerCtrl( self, wx.ID_ANY, wx.EmptyString, u"Select a folder", wx.DefaultPosition, wx.DefaultSize, wx.DIRP_DEFAULT_STYLE )
+		bSizer1.Add( self.dirPicker, 0, wx.ALL|wx.EXPAND, 5 )
+
+		self.subdirCheckBox = wx.CheckBox( self, wx.ID_ANY, u"Include Subdirectories", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.subdirCheckBox.SetValue(True)
+		bSizer1.Add( self.subdirCheckBox, 0, wx.ALL, 5 )
+
+		self.debugOutputBox = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.TE_MULTILINE|wx.TE_READONLY|wx.TE_RICH )
 		bSizer1.Add( self.debugOutputBox, 1, wx.ALL|wx.EXPAND, 5 )
 
 
@@ -51,6 +63,8 @@ class mainscreen ( wx.Frame ):
 		# Connect Events
 		self.collectFileButton.Bind( wx.EVT_BUTTON, self.collectfiles )
 		self.pickEpsButton.Bind( wx.EVT_BUTTON, self.pickepisodes )
+		self.dirPicker.Bind( wx.EVT_DIRPICKER_CHANGED, self.setNewPath )
+		self.subdirCheckBox.Bind( wx.EVT_CHECKBOX, self.changeSubdir )
 
 	def __del__( self ):
 		pass
@@ -61,6 +75,12 @@ class mainscreen ( wx.Frame ):
 		event.Skip()
 
 	def pickepisodes( self, event ):
+		event.Skip()
+
+	def setNewPath( self, event ):
+		event.Skip()
+
+	def changeSubdir( self, event ):
 		event.Skip()
 
 
